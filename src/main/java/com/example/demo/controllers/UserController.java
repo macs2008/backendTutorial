@@ -1,6 +1,8 @@
 package com.example.demo.controllers;
 
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
+import com.example.demo.wsdto.QueryResult;
 import com.example.demo.wsdto.RestRespond;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -25,7 +28,7 @@ public class UserController {
 	protected ObjectMapper mapper;
 	
 	
-	@RequestMapping(value ="/prueba",method = RequestMethod.POST)
+	@RequestMapping(value ="/saveOrUpdate",method = RequestMethod.POST)
 	public RestRespond saveOrUpdate(@RequestBody String userJson) throws JsonMappingException, JsonProcessingException {
 		
 		this.mapper = new ObjectMapper();
@@ -63,9 +66,10 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping(value ="/prueba1",method = RequestMethod.GET)
-	public void prueba()  {
+	@RequestMapping(value ="/getUsers",method = RequestMethod.GET)
+	public List<User> getUsers() {
 		
-		System.out.println("prueba");
+		return this.userService.findAll();
 	}
+	
 }
