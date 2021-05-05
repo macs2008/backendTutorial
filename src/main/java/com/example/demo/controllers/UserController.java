@@ -57,6 +57,7 @@ public class UserController {
 			
 			 isValidate = false;	
 		}
+		System.out.println("prueba");
 		
 		return isValidate;
 	}
