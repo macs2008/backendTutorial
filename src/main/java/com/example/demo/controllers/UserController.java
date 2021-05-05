@@ -65,6 +65,21 @@ public class UserController {
 		return isValidate;
 	}
 	
+	@RequestMapping(value ="/deleteUsers",method = RequestMethod.POST)
+	public void deleteUsers(@RequestBody String userJson) throws Exception {
+		
+		this.mapper = new ObjectMapper();
+		User user = this.mapper.readValue(userJson, User.class);
+		
+		
+		if(user.getId()== null) {
+			throw new Exception("EL id es null");
+		}
+		
+		this.userService.deleteUser(user.getId());
+
+	}
+	
 	
 	@RequestMapping(value ="/getUsers",method = RequestMethod.GET)
 	public List<User> getUsers() {
