@@ -1,4 +1,4 @@
-package com.example.model;
+package com.example.demo.model;
 
 import java.io.Serializable;
 
@@ -13,7 +13,7 @@ public class ParentEntity implements Serializable {
 	private static final long serialVersionUID = 1830472776121667912L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id",unique = true,nullable = false)
 	private Long id;
 

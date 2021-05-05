@@ -1,19 +1,26 @@
-package com.example.model;
+package com.example.demo.model;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
-
-
 
 @Entity
 @Table(name="users")
 @Access(AccessType.FIELD)
-public class User extends ParentEntity {
+public class User  {
 
 	private static final long serialVersionUID = -7346797309553359358L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id",unique = true,nullable = false)
+	private Long id;
+	
 	
 	@Column(name="firs_name",nullable = false,length = 255)
 	private String firsName ;
@@ -30,7 +37,7 @@ public class User extends ParentEntity {
 	@Column(name="phone",nullable = true,length = 30)
 	private String	phone ;
 	
-	@Column(name="adrres",nullable = false,length = 255)
+	@Column(name="adrres",nullable = false,length = 150)
 	private String	adrres ;
 	
 	
@@ -69,6 +76,12 @@ public class User extends ParentEntity {
 	}
 	public void setAdrres(String adrres) {
 		this.adrres = adrres;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }
